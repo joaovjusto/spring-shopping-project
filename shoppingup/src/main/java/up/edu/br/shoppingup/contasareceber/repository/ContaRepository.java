@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import up.edu.br.shoppingup.contasareceber.entity.Conta;
-import up.edu.br.shoppingup.exemplo.entity.Veiculo;
 
 public interface ContaRepository extends JpaRepository<Conta, Integer> {
 
