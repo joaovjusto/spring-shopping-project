@@ -17,7 +17,7 @@ import up.edu.br.shoppingup.eventos.service.EventoService;
 
 @RestController
 @RequestMapping ("/public/evento")
-public class EventoController 
+public class EventosController 
 {
 	@Autowired
 	private EventoService service;

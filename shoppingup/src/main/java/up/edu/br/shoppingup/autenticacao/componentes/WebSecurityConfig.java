@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,8 +25,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailServiceImpl userDetailService;
 	
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
+	protected void configure(HttpSecurity httpSecurity, WebSecurity web) throws Exception {
+		web
+        .ignoring()
+        .antMatchers("/h2/**");
+		httpSecurity.authorizeRequests()
+        .antMatchers("/h2/**").permitAll();
 		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/public/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/public/login").permitAll().anyRequest().authenticated().and()
 
