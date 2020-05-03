@@ -24,7 +24,7 @@ public class Boleto {
 
 
 	@Column(name = "VALORPARCELA")
-	private Integer valorparcela;
+	private Float valorparcela;
 
 	@Column(name = "IDCONTA")
 	private Integer idConta;
@@ -53,11 +53,11 @@ public class Boleto {
 		this.juros = juros;
 	}
 
-	public Integer getValorparcela() {
+	public Float getValorparcela() {
 		return valorparcela;
 	}
 
-	public void setValorparcela(Integer valorparcela) {
+	public void setValorparcela(Float valorparcela) {
 		this.valorparcela = valorparcela;
 	}
 

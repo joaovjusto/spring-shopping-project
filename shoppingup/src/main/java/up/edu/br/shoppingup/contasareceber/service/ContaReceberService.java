@@ -8,35 +8,35 @@ import org.springframework.transaction.annotation.Transactional;
 
 import up.edu.br.shoppingup.commom.exception.BusinessException;
 import up.edu.br.shoppingup.commom.exception.BusinessExceptionCode;
+import up.edu.br.shoppingup.contasareceber.entity.Boleto;
 import up.edu.br.shoppingup.contasareceber.entity.ContaReceber;
-import up.edu.br.shoppingup.contasareceber.entity.Devedor;
+import up.edu.br.shoppingup.contasareceber.repository.BoletoRepository;
 import up.edu.br.shoppingup.contasareceber.repository.ContaReceberRepository;
-import up.edu.br.shoppingup.contasareceber.repository.DevedorRepository;
 import up.edu.br.shoppingup.exemplo.entity.Veiculo;
 import up.edu.br.shoppingup.exemplo.repository.VeiculoRepository;
 
 @Service
-public class DevedorService {
+public class ContaReceberService {
 
 	@Autowired
-	private DevedorRepository devedorRep;
-
+	private ContaReceberRepository contaRep;
+	private BoletoRepository boletoRep ;
 	@Transactional
-	public Devedor salvar(Devedor devedor) {		
-	
-		return devedorRep.save(devedor);
+	public ContaReceber salvar(ContaReceber conta) {	
+		
+		return contaRep.save(conta);
 	}
 
-	public List<Devedor> listar() {
-		return devedorRep.findAll();
+	public List<ContaReceber> listar() {
+		return contaRep.findAll();
 	}
 
-	public void excluir(Devedor devedor) {
-		devedorRep.delete(devedor);
+	public void excluir(ContaReceber conta) {
+		contaRep.delete(conta);
 	}
 
-	public Devedor buscarPorId(Integer id) {
-		return devedorRep.findById(id).get();
+	public ContaReceber buscarPorId(Integer id) {
+		return contaRep.findById(id).get();
 	}
 
 
